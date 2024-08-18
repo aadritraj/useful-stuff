@@ -1,16 +1,19 @@
 <script lang="ts">
-    let listItems = $state([
-        { text: "This isnt done", done: false },
-        { text: "This is done", done: true },
-    ]);
-    /* vscode syntax highlighting seems to break if these
-    newlines arent present, hope this is fixed soon. */
+    type TodoItem = {
+        text: string;
+        done: boolean
+    };
+    let listItems = $state<TodoItem[]>([]);
     let newTodoValue = $state("");
+
+    let done = $derived(listItems.filter((item) => item.done))
+    let unfinished = $derived(listItems.filter((item) => !item.done))
 
     const addTodo = () => {
         if (newTodoValue.length == 0) return;
 
         listItems = [...listItems, { text: newTodoValue, done: false }];
+        newTodoValue = "";
     };
 
     const editTodo = (event: Event) => {
@@ -36,21 +39,16 @@
         const index = +target.dataset.index!;
 
         listItems.splice(index, 1);
-    }
+    };
 </script>
 
 <div>
-    <input
-        onkeydown={(event: KeyboardEvent) => {
-            if (event.key != "Enter") return;
-
-            addTodo();
-        }}
-        bind:value={newTodoValue}
-        placeholder="Add Todo"
-        type="text"
-    />
-    <button onclick={addTodo}>Add</button>
+    <h1>
+        There are {listItems.length} entries
+    </h1>
+    {#if listItems.length > 0}
+        ({done.length} completed, {unfinished.length} uncompleted)
+    {/if}
 
     <div>
         {#each listItems as todo, i}
@@ -61,4 +59,16 @@
             </div>
         {/each}
     </div>
+
+    <input
+        onkeydown={(event: KeyboardEvent) => {
+            if (event.key != "Enter") return;
+
+            addTodo();
+        }}
+        bind:value={newTodoValue}
+        placeholder="Type here"
+        type="text"
+    />
+    <button onclick={addTodo}>Add</button>
 </div>
