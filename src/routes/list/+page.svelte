@@ -9,6 +9,18 @@
     let done = $derived(listItems.filter((item) => item.done))
     let unfinished = $derived(listItems.filter((item) => !item.done))
 
+    $effect(() => {
+        const savedTodos = localStorage.getItem("saved_todos");
+        
+        if (savedTodos) {
+            listItems = JSON.parse(savedTodos);
+        };
+    });
+
+    $effect(() => {
+        localStorage.setItem("saved_todos", JSON.stringify(listItems))
+    })
+    
     const addTodo = () => {
         if (newTodoValue.length == 0) return;
 
