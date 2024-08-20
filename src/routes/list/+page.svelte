@@ -6,8 +6,8 @@
     let listItems = $state<TodoItem[]>([]);
     let newTodoValue = $state("");
 
-    let done = $derived(listItems.filter((item) => item.done))
-    let unfinished = $derived(listItems.filter((item) => !item.done))
+    let done = $derived(listItems.filter((item) => item.done));
+    let unfinished = $derived(listItems.filter((item) => !item.done));
 
     $effect(() => {
         const savedTodos = localStorage.getItem("saved_todos");
@@ -18,9 +18,9 @@
     });
 
     $effect(() => {
-        localStorage.setItem("saved_todos", JSON.stringify(listItems))
-    })
-    
+        localStorage.setItem("saved_todos", JSON.stringify(listItems));
+    });
+
     const addTodo = () => {
         if (newTodoValue.length == 0) return;
 
