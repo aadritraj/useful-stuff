@@ -40,7 +40,10 @@
 	};
 </script>
 
-<title>Local Todo-List</title>
+<svelte:head>
+	<title>Local Todo-List</title>
+	<meta name="description" content="Todo-List, stored locally." />
+</svelte:head>
 
 <h1>Local Todos</h1>
 <p>A Local Todo-List, stored in your Local Storage</p>
