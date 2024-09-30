@@ -19,6 +19,19 @@
 
 	let cycles = $state(0);
 
+	let titleState = $derived.by(() => {
+		switch (currentState) {
+			case states.idle:
+				return "Idle";
+			case states.progressing:
+				return "In Progress";
+			case states.resting:
+				return "On Break";
+			default:
+				return "Pomodoro Timer";
+		}
+	});
+
 	let formattedTime = $derived.by(() => {
 		const minutes = Math.floor(currentTime / 60)
 			.toString()
@@ -75,6 +88,11 @@
 		idle();
 	};
 </script>
+
+<svelte:head>
+	<title>{formattedTime} - {titleState}</title>
+	<meta name="description" content="A virtual timer for applying the Pomodoro Technique." />
+</svelte:head>
 
 <time>{formattedTime}</time>
 <div>
