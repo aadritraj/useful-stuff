@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let href: string = "";
-	export let target: string = "_blank";
+	export let target: string = "_self";
 
 	/* might want to replace this later with a global svg store
 	heroicons outline link */
