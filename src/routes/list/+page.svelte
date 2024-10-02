@@ -3,10 +3,17 @@
 		text: String;
 		done: false;
 	};
+	type TodoList = {
+		meta: {};
+		items: TodoItem[];
+	};
 	// the localStorage key that the list will occupy
 	const STORAGE_KEY = "S_Todo";
 
-	let list = $state<TodoItem[]>([]);
+	let list = $state<TodoList>({
+		meta: {},
+		items: []
+	});
 	let entry = $state<String>("");
 
 	$effect(() => {
@@ -30,13 +37,13 @@
 			text: entry,
 			done: false
 		};
-		list.push(newTodo);
+		list.items.push(newTodo);
 
 		entry = "";
 	};
 
 	const removeTodo = (index: number) => {
-		list.splice(index, 1);
+		list.items.splice(index, 1);
 	};
 </script>
 
@@ -48,13 +55,13 @@
 <h1>Local Todos</h1>
 <p>A Local Todo-List, stored in your Local Storage</p>
 
-<p>There are {list.length} items</p>
+<p>There are {list.items.length} items</p>
 
 <input type="text" bind:value={entry} placeholder="What to add?" />
 <button onclick={addTodo}>Add</button>
 
 <section>
-	{#each list as item, index}
+	{#each list.items as item, index}
 		<div>
 			<input type="checkbox" bind:checked={item.done} />
 			{item.text}
