@@ -45,6 +45,26 @@
 	const removeTodo = (index: number) => {
 		list.items.splice(index, 1);
 	};
+
+	// abstracted away from what will be called by the buttons
+	const editTodo = async (index: number, body: string) => {
+		try {
+			list.items[index].text = body;
+		} catch (ex) {
+			throw new Error(ex as string);
+		}
+	};
+
+	const promptEditTodo = (index: number) => {
+		/* favorably, replace prompt() with a custom implementation
+		as appearance is based on the browser */
+
+		let newBody = prompt("What should this be replaced with?");
+
+		if (!newBody) return;
+
+		editTodo(index, newBody);
+	};
 </script>
 
 <svelte:head>
@@ -66,6 +86,7 @@
 			<input type="checkbox" bind:checked={item.done} />
 			{item.text}
 			<button onclick={() => removeTodo(index)}>Remove</button>
+			<button onclick={() => promptEditTodo(index)}>Edit</button>
 		</div>
 	{/each}
 </section>
