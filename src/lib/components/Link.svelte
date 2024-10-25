@@ -1,8 +1,7 @@
 <script lang="ts">
 	import Link from "$lib/svgs/Link.svelte";
 
-	export let href: string = "";
-	export let target: string = "_self";
+	let { href = "", target = "_self" } = $props();
 </script>
 
 <div class="flex items-center gap-1">
