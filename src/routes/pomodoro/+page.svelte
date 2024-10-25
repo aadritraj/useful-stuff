@@ -15,7 +15,7 @@
 
 	let currentTime = $state(periods.pomodoro);
 	let currentState = $state(states.idle);
-	let interval: Timer;
+	let interval: ReturnType<typeof setInterval>;
 
 	let cycles = $state(0);
 
