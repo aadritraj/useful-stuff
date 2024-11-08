@@ -4,11 +4,13 @@
 		Link
 	*/
 
-	let className = "size-5";
-	export { className as class };
+	interface Props {
+		class?: string;
+		height?: string;
+		width?: string;
+	}
 
-	export let height = "1rem";
-	export let width = "1rem";
+	let { class: className = "size-5", height = "1rem", width = "1rem" }: Props = $props();
 </script>
 
 <svg
