@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Button from "$lib/components/Button.svelte";
+
 	type TodoItem = {
 		text: String;
 		done: false;
@@ -78,15 +80,15 @@
 <p>There are {list.items.length} items</p>
 
 <input type="text" bind:value={entry} placeholder="What to add?" />
-<button onclick={addTodo}>Add</button>
+<Button onclick={addTodo}>Add</Button>
 
 <section>
 	{#each list.items as item, index}
 		<div>
 			<input type="checkbox" bind:checked={item.done} />
 			{item.text}
-			<button onclick={() => removeTodo(index)}>Remove</button>
-			<button onclick={() => promptEditTodo(index)}>Edit</button>
+			<Button onclick={() => removeTodo(index)}>Remove</Button>
+			<Button onclick={() => promptEditTodo(index)}>Edit</Button>
 		</div>
 	{/each}
 </section>
