@@ -100,7 +100,7 @@
 	<div class="flex flex-col items-center">
 		<h1 class="text-5xl font-medium">Pomodoro Timer</h1>
 		<p>A simple lightweight timer</p>
-		<Link href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Learn more about the Pomodoro Technique</Link>
+		<Link target="_blank" href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Learn more about the Pomodoro Technique</Link>
 	</div>
 
 	<div class="rounded-md bg-sky-300 p-4 font-mono text-9xl font-semibold text-white">
