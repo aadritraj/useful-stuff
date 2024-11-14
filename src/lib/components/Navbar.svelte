@@ -3,7 +3,9 @@
 </script>
 
 <nav class="flex w-full items-center justify-between border-b p-3">
-	<h1 class="text-xl">Useful Stuff</h1>
+	<a href="/">
+		<h1 class="text-xl">Useful Stuff</h1>
+	</a>
 
 	<div>
 		<div class="flex flex-row items-center gap-4">
