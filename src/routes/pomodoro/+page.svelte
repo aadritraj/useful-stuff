@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Link from "$lib/components/Link.svelte";
+	import Button from "$lib/components/Button.svelte";
 	const POMODORI_COUNT = 4;
 
 	const states = {
@@ -94,9 +96,27 @@
 	<meta name="description" content="A virtual timer for applying the Pomodoro Technique." />
 </svelte:head>
 
-<time>{formattedTime}</time>
-<div>
-	<button onclick={cancelPomodoro}>Cancel</button>
-	<button onclick={startPomodoro}>Begin</button>
-	<button onclick={completePomodoro}>Complete</button>
+<div class="flex flex-col items-center gap-4 justify-center p-10">
+	<div class="flex flex-col items-center">
+		<h1 class="text-5xl font-medium">Pomodoro Timer</h1>
+		<p>A simple lightweight timer</p>
+		<Link href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Learn more about the Pomodoro Technique</Link>
+	</div>
+
+	<div class="rounded-md bg-sky-300 p-4 font-mono text-9xl font-semibold text-white">
+		{formattedTime}
+	</div>
+
+	<div class="flex flex-col items-center">
+		<span class="text-2xl font-light font-mono">Controls</span>
+		<p>Begin to start the Timer</p>
+		<p>Complete to finish a Pomodori</p>
+		<p>Cancel to reset the Timer</p>
+	</div>
+
+	<div class="flex flex-col space-y-1 max-w-xs w-full">
+		<Button onclick={startPomodoro}>Begin</Button>
+		<Button onclick={completePomodoro}>Complete</Button>
+		<Button onclick={cancelPomodoro}>Cancel</Button>
+	</div>
 </div>
