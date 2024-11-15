@@ -96,25 +96,29 @@
 	<meta name="description" content="A virtual timer for applying the Pomodoro Technique." />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-4 justify-center p-10">
+<div class="flex flex-col items-center justify-center gap-4 p-10">
 	<div class="flex flex-col items-center">
-		<h1 class="text-5xl font-medium">Pomodoro Timer</h1>
+		<h1 class="text-center text-5xl font-medium">Pomodoro Timer</h1>
 		<p>A simple lightweight timer</p>
-		<Link target="_blank" href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Learn more about the Pomodoro Technique</Link>
-	</div>
-
-	<div class="rounded-md bg-sky-300 p-4 font-mono text-9xl font-semibold text-white">
-		{formattedTime}
+		<Link target="_blank" href="https://en.wikipedia.org/wiki/Pomodoro_Technique"
+			>Read more here</Link
+		>
 	</div>
 
 	<div class="flex flex-col items-center">
-		<span class="text-2xl font-light font-mono">Controls</span>
+		<span class="font-mono text-2xl font-light">Controls</span>
 		<p>Begin to start the Timer</p>
 		<p>Complete to finish a Pomodori</p>
 		<p>Cancel to reset the Timer</p>
 	</div>
 
-	<div class="flex flex-col space-y-1 max-w-xs w-full">
+	<div
+		class="max-w-5xl text-clip rounded-md bg-sky-300 p-2 font-mono text-8xl font-semibold text-white"
+	>
+		{formattedTime}
+	</div>
+
+	<div class="flex w-full max-w-xs flex-col space-y-1">
 		<Button onclick={startPomodoro}>Begin</Button>
 		<Button onclick={completePomodoro}>Complete</Button>
 		<Button onclick={cancelPomodoro}>Cancel</Button>
